@@ -5,6 +5,7 @@ import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from '
 import Card from './Card'
 import propTypes from 'prop-types'
 import Loading from './Loading'
+import Tooltip from './Tooltip'
 
 function ProfileList({profile}) {
   return (
@@ -15,14 +16,19 @@ function ProfileList({profile}) {
       </li>
       {profile.location && (
         <li>
-          <FaCompass color='rgb(144, 115, 255)' size={22} />
-          {profile.location}
+          <Tooltip text = "User's location" >
+            <FaCompass color='rgb(144, 115, 255)' size={22} />
+            {profile.location}
+          </Tooltip>
         </li>
       )}
       {profile.company && (
         <li>
-          <FaBriefcase color='#795548' size={22} />
-          {profile.company}
+          <Tooltip text = "User's company">
+            <FaBriefcase color='#795548' size={22} />
+            {profile.company}
+          </Tooltip> 
+         
         </li>
       )}
       <li>
@@ -103,7 +109,7 @@ export default class Results extends React.Component {
             subheader = {`Score: ${loser.score.toLocaleString()}`}
             avatar={loser.profile.avatar_url}
             href= {loser.profile.html_url}
-            name = {loser.profile.login}
+            name = {loser.profile.name}
           >
             <ProfileList
               profile = {loser.profile}
