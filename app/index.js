@@ -10,10 +10,7 @@ import Results from './components/Results'
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
+    state = {
       theme: 'light',
       toggleTheme: () => {
         this.setState(( {theme} ) => ({
@@ -21,7 +18,6 @@ class App extends React.Component {
         }))
       }
     }
-  }
   render() {
     return (
     <Router>
